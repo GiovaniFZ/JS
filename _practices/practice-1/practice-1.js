@@ -10,19 +10,24 @@ function formatAmountToDollar(amt) {
     return '$' + amt.toFixed(2);
 }
 
-function calculateTax() {
-    while (bank_balance > amount) {
+function calculateTax(amt) {
+    return amt + (amt * TAX_RATE);
+}
+
+function verifyPurchase() {
+    while (bank_balance >= amount) {
+        amount += PHONE_PRICE;
         if (amount < SPENDING_THRESHOLD) {
             amount += ACCESSORY_PRICE;
         }
-        amount = amount * TAX_RATE;
-        console.log(formatAmountToDollar(amount));
     }
+    amount = calculateTax(amount);
+    console.log('Your purchase: ', formatAmountToDollar(amount));
     if (amount <= bank_balance) {
-       console.log("YOU CAN PURCHASE");
-       return;
+        console.log("YOU CAN PURCHASE");
+        return;
     }
     console.log("YOU CAN NOT PURCHASE");
 }
 
-calculateTax();
+verifyPurchase();
