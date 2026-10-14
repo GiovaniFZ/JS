@@ -2,7 +2,8 @@
 
 function verifyPalindrome(word: string) {
     const lowerCaseWord = word.toLowerCase();
-    const normalizedWord = word.toLowerCase().split('').reverse().join('');
+    // source: https://www.geeksforgeeks.org/typescript/reverse-a-string-in-typescript/
+    const normalizedWord = word.toLowerCase().split('').reverse().join(''); 
     if (lowerCaseWord === normalizedWord) {
         console.log(`YES, ${word} is palindrome`)
     } else {
